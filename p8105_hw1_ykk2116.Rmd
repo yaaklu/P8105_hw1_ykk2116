@@ -38,10 +38,11 @@ mean(example_df1$vec_factor)
 
 _The mean of the random sample is 3.64801, whiles for the logical vector is 0.9_
 
-_The mean of the character varaibles and factor variables could not be computed because they are not numeric or logical. Thus, do not have assigned numeric values, which is needed in computation of a mean. A mean can ony be computated from numbers_
+_The mean of the character varaibles and factor variables could not be computed because they are not numeric or logical. Thus, do not have assigned numeric values, which is needed in the computation of a mean value. A mean can ony be computated from numbers_
 
 
 **Conversion of variables from one form to the other (1)**
+
 ```{r, results='hide'}
 as.numeric(example_df1$vec_logical)
 
@@ -50,6 +51,7 @@ as.numeric(example_df1$vec_char)
 as.numeric(example_df1$vec_factor)
 
 ```
+
 _The logical variables was converted to a numeric where TRUE was assigned a numberic value of 1 and FALSE was assigned a numeric value of 0_
 
 _The character variables were all converted to NAs, which was introduced by coercion_
