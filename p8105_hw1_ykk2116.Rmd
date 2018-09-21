@@ -1,0 +1,114 @@
+---
+title: "P8105_hw1_ykk2116"
+author: "Yaa Klu"
+date: "9/19/2018"
+output: github_document
+---
+
+## Problem 1 
+
+### Creating a data frame
+
+```{r}
+library(tidyverse)
+
+set.seed(758)
+
+example_df1 = tibble(
+  numbers = runif(10, min = 1, max = 5),
+  vec_logical = numbers > 2,
+  vec_char = c("Liberia", "Tanzania", "Bangladesh", "India", "Ghana", "Indonesia","Nigeria", "Togo", "China", "Thailand"),
+  vec_factor = factor(c("Africa", "Africa", "Asia", "Asia", "Africa", "Asia", "Africa", "Africa", "Asia", "Asia"))
+)
+
+```
+
+
+### Mean of each variable in data frame
+
+```{r}
+mean(example_df1$numbers)
+
+mean(example_df1$vec_logical)
+
+mean(example_df1$vec_char)
+
+mean(example_df1$vec_factor)
+```
+
+
+
+### Conversion of variables from one form to the other
+```{r, results='hide'}
+as.numeric(example_df1$vec_logical)
+
+as.numeric(example_df1$vec_char)
+
+as.numeric(example_df1$vec_factor)
+
+```
+
+
+```{r}
+character_factor = as.factor(example_df1$vec_char)
+character_factor
+as.numeric(character_factor)
+
+
+
+factor_character = as.character(example_df1$vec_factor)
+factor_character
+as.numeric(factor_character)
+
+```
+
+
+## Problem 2
+```{r}
+
+library(tidyverse)
+set.seed(433)
+
+example_df2 = tibble(
+  x = rnorm(1000),
+  y = rnorm(1000),
+  vec_logical = x + y > 0,
+  num_vec = as.numeric(vec_logical),
+  fac_vec = as.vector(vec_logical)  
+)
+
+```
+
+
+The size of the dataset is `r nrow(example_df2)` and the mean of x is `r mean(example_df2$x)`. The median of x is `r median (example_df2$x)` and the proportion of cases for which the logical vector is TRUE is `r (sum(example_df2$vec_logical)/nrow(example_df2))` 
+
+
+```{r}
+plot1=ggplot(example_df2, aes(x = x, y = y, color=vec_logical)) + geom_point()
+
+plot1
+```
+
+
+```{r}
+plot2=ggplot(example_df2, aes(x = x, y = y, color=num_vec )) + geom_point()
+
+plot2
+```
+
+
+```{r}
+plot3=ggplot(example_df2, aes(x = x, y = y, color=fac_vec )) + geom_point()
+
+plot3
+```
+
+```{r}
+
+ggsave("scatter_plot1.pdf", plot=plot1, height = 4, width = 6)
+
+
+```
+
+
+
