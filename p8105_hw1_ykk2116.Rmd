@@ -5,9 +5,9 @@ date: "9/19/2018"
 output: github_document
 ---
 
-## Problem 1 
+### Problem 1 
 
-### Creating data frame 1
+**Creating data frame 1**
 
 ```{r}
 library(tidyverse)
@@ -24,7 +24,7 @@ example_df1 = tibble(
 ```
 
 
-### Mean of each variable in data frame
+**Mean of each variable in data frame**
 
 ```{r}
 mean(example_df1$random_sample)
@@ -41,7 +41,7 @@ _The mean of the random sample is 3.64801, whiles for the logical vector is 0.9_
 _The mean of the character varaibles and factor variables could not be computed because they are not numeric or logical. Thus, do not have assigned numeric values, which is needed in computation of a mean. A mean can ony be computated from numbers_
 
 
-### Conversion of variables from one form to the other (1)
+**Conversion of variables from one form to the other (1)**
 ```{r, results='hide'}
 as.numeric(example_df1$vec_logical)
 
@@ -57,7 +57,8 @@ _The character variables were all converted to NAs, which was introduced by coer
 _The factor variables were all converted to 1s and 2s. 1 was assigned to Africa and 2 was assigned to Asia_
 
 
-### Conversion of variables from one form to the other (2)
+**Conversion of variables from one form to the other (2)**
+
 ```{r}
 character_factor = as.factor(example_df1$vec_char)
 character_factor
@@ -74,10 +75,10 @@ _The character variables were eventually converted to numeric variables, by assi
 _The factor variables could not be converted to numeric variables. Instead, they were forced by coercison into NAs. This is because, the factor variables were coverted into character variables, which cannot be converted into numeric variables_
 
 
+### Problem 2
 
-## Problem 2
+**Creating data frame 2**
 
-### Creating data frame 2
 ```{r}
 
 set.seed(433)
@@ -93,12 +94,12 @@ example_df2 = tibble(
 ```
 
 
-### Description of vector using inline Rcode
+**Description of vector using inline Rcode**
 
 The size of the dataset is `r nrow(example_df2)` and the mean of x is `r mean(example_df2$x)`. The median of x is `r median (example_df2$x)` and the proportion of cases for which the logical vector is TRUE is `r (sum(example_df2$vec_logical)/nrow(example_df2))` 
 
 
-### Making of scatterplots
+**Making of scatterplots**
 
 ```{r}
 scatterplot_1=ggplot(example_df2, aes(x = x, y = y, color=vec_logical)) + geom_point()
